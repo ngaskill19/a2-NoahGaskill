@@ -1,4 +1,18 @@
 body {
-  background:black;
+  background:rgb(227, 255, 255);
   color:white;
 }
+
+main{
+  width:80%;
+  margin: 0 auto;
+  display: flex;
+  align-items: space-between;
+}
+
+.box{
+  margin: 0.5em 1.5em;
+  padding:1.5em;
+  background-color: rgb(218, 157, 221);
+}
+

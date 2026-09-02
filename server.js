@@ -8,10 +8,20 @@ const http = require( 'http' ),
       port = 3000
 
 const appdata = [
-  { 'model': 'toyota', 'year': 1999, 'mpg': 23 },
-  { 'model': 'honda', 'year': 2004, 'mpg': 30 },
-  { 'model': 'ford', 'year': 1987, 'mpg': 14} 
-]
+  { 'recipeName': 'Basic Pan-Fried Chicken', 
+    'ingredients': ['1lb chicken', '1/4 cornstarch', 'salt', 'pepper'], 
+    'instructions' : ['Season chicken with salt and pepper', 'Coat both side with cornstarch', 'Drizzle oil and heat pan to medium-high',
+      'Once hot, pan-fry the chicek for 5 minutes on each side'], 
+    'cookTime': 20,
+    'difficulty': 'simple'},
+  { 'recipeName': 'Hamburger', 
+    'ingredients': ['1lb ground beef', '1 bun', '1 slice cheese', 'garlic powder', 'onion powder', 'onion salt', 'garlic salt'],
+    'instructions' : ['Form beef into 4 1/4lb patties', 'Season one side with garlic powder and onion salt',
+      'Season other side with onion powder and garlic salt', 'Cook on high for 5 minutes on each side',
+      'As the 2nd side cookies, add a slice of cheese'],
+    'cookTime': 15,
+    'difficulty': 'moderate'}
+  ]
 
 const server = http.createServer( function( request,response ) {
   if( request.method === 'GET' ) {
@@ -26,7 +36,12 @@ const handleGet = function( request, response ) {
 
   if( request.url === '/' ) {
     sendFile( response, 'public/index.html' )
-  }else{
+  }else if(request.url === '/data'){
+    console.log(`Getting appdata starting with: ${appdata[0]}`)
+    response.writeHead( 200, "OK", {'Content-Type': 'text/plain' })
+    response.end(JSON.stringify(appdata))
+  }
+  else{
     sendFile( response, filename )
   }
 }
@@ -39,13 +54,13 @@ const handlePost = function( request, response ) {
   })
 
   request.on( 'end', function() {
-    console.log( JSON.parse( dataString ) )
+    appdata.push( JSON.parse( dataString ) )
     // ... do something with the data here!!!
 
     response.writeHead( 200, "OK", {'Content-Type': 'text/plain' })
 
     // change this to incorporate data
-    response.end('test')
+    response.end(JSON.stringify(appdata))
   })
 }
 
