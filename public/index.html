@@ -11,31 +11,31 @@
   </head>
   <body>
     <main>
-      <form class='box'>
+      <form class='box' id='form'>
         <h2>Add Recipe</h2>
         <section>
-          <label for='name'>Name:</label>
-          <input type='text' id='name' value='0'>
+          <label for='recipe-name'>Name:</label>
+          <input type='text' id='recipe-name' value=''>
         </section>
-        <section id='ingredient-form'>
-        <label for='ingredients'>Ingredients: </label>
-        <input type='text' id='ingredients' value='Enter an ingredient'>
-        <button type='button'>Add ingredient</button>
-        <ul id='ingredient-list'></ul>
+        <section>
+          <label for='ingredients'>Ingredients: </label>
+          <input type='text' id='ingredients' value='Enter one ingredient'>
+          <button type='button' class='add'>Add ingredient</button>
+          <ul id='ingredients-list'></ul>
         </section>
         <section>
           <label for='instructions'>Instructions: </label>
-          <input type='text' id='instructions' value='Enter the instructions'>
-          <button type='button'>Add ingredient</button>
-          <ul id='instructions-list'></ul>
+          <input type='text' id='instructions' value='Enter a step'>
+          <button type='button' class='add'>Add step</button>
+          <ol id='instructions-list'></ol>
         </section>
         <section>
           <label for='cook-time'>Cook time: </label>
-          <input type='number' id='instructions' value='0'>
+          <input type='number' id='cook-time' value='0'>
         </section>
         <button id="submit">Submit Recipe</button>
       </form>
-      <section class = 'box'>
+      <section class='box' id='recipes'>
         <h2 id = 'all-recipes'>All Recipes</h2>
       </section>
     </main>

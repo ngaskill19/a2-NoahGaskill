@@ -1,7 +1,7 @@
 Assignment 2 - Short Stack: Basic Two-tier Web Application using HTML/CSS/JS and Node.js  
 ===
 
-Due: September 9th, by 11:59 AM.
+Due: September 4th, by 1:59 PM.
 
 This assignment will introduce you to creating a prototype two-tiered web application. 
 Your application will include the use of HTML, CSS, JavaScript, and Node.js functionality, with active communication between the client and the server.
@@ -56,7 +56,7 @@ Do the following to complete this assignment and achieve a base grade of 85%:
 1. Fork the starting project code. This repo contains some starter code that may be used or discarded as needed.
 2. Implement your project with the above requirements.
 3. Test your project to make sure that when someone goes to your main page, it displays correctly.
-4. Deploy your project to Glitch, and fill in the appropriate fields in your package.json file.
+4. Deploy your project to Render, and fill in the appropriate fields in your package.json file.
 5. Ensure that your project has the proper naming scheme `a2-yourGithubUsername` so we can find it.
 6. Modify the README to the specifications below, and delete all of the instructions originally found in this README.
 7. Create and submit a Pull Request to the original repo. Label the pull request as follows: a2-gitusername-firstname-lastname
@@ -94,7 +94,11 @@ Sample Readme (delete the above when you're ready to submit, and modify the belo
 Include a very brief summary of your project here. Be sure to include the CSS positioning technique you used, and any required instructions to use your application.
 
 ## Technical Achievements
-- **Tech Achievement 1**: Using a combination of...
+- **Tech Achievement 1 - Single Page App**: Using a GET request once the page loads, I use Javascript to build tables for each of the recipe on the server-side data as soon as the page loads. Both the form to input a new recipe as well as the stored recipe tables are displayed on index.html. When the user submits the form, it sends the new recipe to the server and then rebuilds the recipe display without changing the page.
+
+- **Tech Achievement 2 - Ingredient/Instruction submission**: I designed the ingredient and instruction fields to work so that users enter one item at a time, which then gets added to a list displayed on the screen. I did have to research some things to make this work, like learning that a button in a form has a default behavior of submitting the form, or how to access the parent element of something so the delete button could work. This design decision also complicated the process of obtaining the entered data. Instead of just using input.value, I had to get the li elements from inside each list, get the inner text, and then parse out the delete button's text. It makes sense that text from an object's children are included in the inner text of the parent, but this is behavior that I felt was not obvious.
+
+
 
 ### Design/Evaluation Achievements
 - **Design Achievement 1**: 

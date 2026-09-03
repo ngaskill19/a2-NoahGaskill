@@ -7,14 +7,38 @@ const submit = async function( event ) {
   // remains to this day
   event.preventDefault()
   
-  const input = document.querySelector( '#name' ),
-        json = { name: input.value },
-        body = JSON.stringify( json )
+  const nameInput = document.querySelector( '#recipe-name' ),
+        timeInput = document.querySelector('#cook-time'),
+        ingredientLi = document.querySelectorAll('#ingredients-list > li'),
+        instructionLi = document.querySelectorAll('#instructions-list > li')
+  
+  const listOfIngredients = []
+  for (let li of ingredientLi){
+    text = li.innerText
+    listOfIngredients.push(text.substring(0,text.length-1))
+  }
 
+  const listOfInstructions = []
+  for (let li of instructionLi){
+    text = li.innerText
+    listOfInstructions.push(text.substring(0,text.length-1))
+  }
+
+  const json = { recipeName: nameInput.value, 
+    ingredients : listOfIngredients,
+    instructions : listOfInstructions,  
+    cookTime : timeInput.value }
+  
+  const body = JSON.stringify( json )
+  console.log(`Sending ${json}`)
   const response = await fetch( '/submit', {
     method:'POST',
     body 
   })
+  const ingredientList = document.querySelector("#ingredients-list")
+  const instructionList = document.querySelector("#instructions-list")
+  ingredientList.innerHTML = ''
+  instructionList.innerHTML = ''
 
   const list = await response.json()
   console.log(list)
@@ -24,8 +48,27 @@ const submit = async function( event ) {
 window.onload = function() {
   const button = document.querySelector('#submit')
   button.onclick = submit
+  const addButtons = document.querySelectorAll('.add')
+  addButtons[0].onclick = () => addItem('ingredients')
+  addButtons[1].onclick = () => addItem('instructions')
 }
 
+function addItem(type){
+  const list = document.querySelector(`#${type}-list`)
+  const input = document.querySelector(`#${type}`)
+  const item = document.createElement('li')
+  item.innerText = input.value
+
+  const deleteBtn = document.createElement('button')
+  deleteBtn.type = 'button'
+  deleteBtn.innerText = 'X'
+  deleteBtn.classList.add('delete')
+  item.appendChild(deleteBtn)
+  list.appendChild(item)
+  deleteBtn.onclick = () => deleteBtn.parentElement.remove()
+  input.focus()
+  input.select()
+}
 
 const getRecipes = async function(){
   const response = await fetch('/data', {method :'GET'})
@@ -34,6 +77,7 @@ const getRecipes = async function(){
   buildTable(list)
   
 }
+
 document.addEventListener("DOMContentLoaded", getRecipes)
 
 function buildTable(list){
@@ -61,8 +105,19 @@ function buildTable(list){
     timeTD.innerText = `Cook time: ${recipe['cookTime']}`
     const diffTD = document.createElement('td')
     diffTD.innerText = `Difficulty: ${recipe['difficulty']}`
+
+    const deleteTD = document.createElement('td'),
+          deleteBtn = document.createElement('button')
+    deleteBtn.type = 'button'
+    deleteBtn.innerText = 'X'
+    deleteBtn.classList.add('delete')
+    deleteTD.appendChild(deleteBtn)
+    deleteBtn.onclick = () => deleteBtn.closest('table').remove()
+
     rows[1].appendChild(timeTD)
     rows[1].appendChild(diffTD)
+    rows[1].appendChild(deleteTD)
+
     
     const ingredientList = document.createElement('ul')
     for (let ingredient of recipe['ingredients']){
@@ -83,6 +138,7 @@ function buildTable(list){
     rows[2].appendChild(ingredientTD)
 
     const instructTD = document.createElement('td')
+    instructTD.colSpan = 2
     instructTD.appendChild(instructList)
     rows[2].appendChild(instructTD)
   }

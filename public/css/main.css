@@ -10,9 +10,43 @@ main{
   align-items: space-between;
 }
 
+#form{
+  width:40%
+}
+#recipes{
+  width: 60%
+}
+
 .box{
   margin: 0.5em 1.5em;
   padding:1.5em;
   background-color: rgb(218, 157, 221);
+  border-radius: 4px;
+  border:0.5em solid rgb(233, 176, 255);
 }
 
+label{
+  display: block;
+}
+
+input{
+  box-sizing: border-box;
+  width:80%;
+  margin: 0.5em auto 1em;
+  border: 1px solid rgb(23, 45, 45);
+  border-radius: 3px;
+}
+
+.delete{
+  background-color: rgb(177, 35, 35);
+  color: white;
+  font-weight: 600;
+  margin: auto 1em;
+  width:2em;
+  border: 3px outset rgb(255, 235, 235);
+  border-radius: 2px;
+}
+
+table{
+  width:90%;
+}
