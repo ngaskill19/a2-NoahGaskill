@@ -8,11 +8,13 @@
 }
 
 body {
-  background:var(--background-color);
+  background-color:var(--background-color);
+  background-image: url('../img/gingham-background.jpg');
   color:var(--text);
   font-size: 1.0em;
   font-family: "Didact Gothic", sans-serif;
   font-weight: 500;
+  background-size: cover;
 }
 
 h1{
