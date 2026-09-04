@@ -1,6 +1,26 @@
+:root{
+  --main-color: #D6BBE8;
+  --background-color: #EFECF8;
+  --dark-border: #D99DDD;
+  --light-border: #DE9EBF;
+  --delete: #a54d5e;
+  --text: hsl(295, 48%, 98%);
+}
+
 body {
-  background:rgb(227, 255, 255);
-  color:white;
+  background:var(--background-color);
+  color:var(--text);
+  font-size: 1.0em;
+  font-family: "Didact Gothic", sans-serif;
+  font-weight: 500;
+}
+
+h1{
+  font-size: 3rem;
+  color: #e1ceed;
+  text-align: center;
+  font-family: "Limelight", sans-serif;
+  text-shadow: 5px 5px var(--dark-border), 4px 4px var(--dark-border), 3px 3px var(--dark-border);
 }
 
 main{
@@ -11,42 +31,84 @@ main{
 }
 
 #form{
-  width:40%
+  width:35%;
 }
 #recipes{
-  width: 60%
+  width: 65%;
 }
 
 .box{
   margin: 0.5em 1.5em;
-  padding:1.5em;
-  background-color: rgb(218, 157, 221);
+  padding:1.5em 2.5em;
+  background-color: var(--main-color);
   border-radius: 4px;
-  border:0.5em solid rgb(233, 176, 255);
+  border:0.5em solid var(--dark-border);
 }
 
 label{
   display: block;
 }
 
-input{
+input, textarea{
+  display: block;
   box-sizing: border-box;
-  width:80%;
-  margin: 0.5em auto 1em;
-  border: 1px solid rgb(23, 45, 45);
+  width:75%;
+  margin: 0.4em 0em 0.8em;
+  padding:2% 2%;
+  border: 2px solid rgb(43, 17, 30);
   border-radius: 3px;
+  
+}
+
+textarea{
+  field-sizing: content;
+  resize: none;
+}
+
+button{
+  color:var(--text);
+  background-color: #af4a88;
+  font-weight: 400;
+  font-size: 0.95em;
+  padding: 2px 4px;
+  border: 3px solid var(--background-color);
+
+}
+
+#submit{
+  background-color: #7098BA;
+  border: 3px solid var(--background-color);
+}
+
+.form li{
+  width: 75%;
+  word-break: break-all;
 }
 
 .delete{
-  background-color: rgb(177, 35, 35);
-  color: white;
-  font-weight: 600;
+  background-color: var(--delete);
   margin: auto 1em;
   width:2em;
-  border: 3px outset rgb(255, 235, 235);
+  border: 3px solid rgb(255, 235, 235);
   border-radius: 2px;
+  font-size: 0.95em;
+  
 }
 
 table{
-  width:90%;
+  width:100%;
+}
+
+h2{
+  font-size: 1.5em;
+}
+.timeTd{
+  text-align: center;
+}
+.deleteTd{
+  display: flex;
+  justify-content: flex-end;
+}
+th{
+  font-size: 1.1em;
 }

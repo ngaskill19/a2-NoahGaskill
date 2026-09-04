@@ -78,6 +78,13 @@ const getRecipes = async function(){
   
 }
 
+async function deleteRecipe(recipeName){
+  const response = await fetch('/delete', {method :'POST', body : JSON.stringify(recipeName)})
+  if(!response.ok){
+    console.log("Error deleting recipe")
+  }
+}
+
 document.addEventListener("DOMContentLoaded", getRecipes)
 
 function buildTable(list){
@@ -97,12 +104,13 @@ function buildTable(list){
     
     //fill rows w/ data
     const nameTH = document.createElement('th')
-    nameTH.colSpan = 2
+    nameTH.colSpan = 3
     nameTH.innerText = recipe['recipeName']
     rows[0].appendChild(nameTH)
 
     const timeTD = document.createElement('td')
     timeTD.innerText = `Cook time: ${recipe['cookTime']}`
+    timeTD.classList.add('timeTd')
     const diffTD = document.createElement('td')
     diffTD.innerText = `Difficulty: ${recipe['difficulty']}`
 
@@ -111,11 +119,15 @@ function buildTable(list){
     deleteBtn.type = 'button'
     deleteBtn.innerText = 'X'
     deleteBtn.classList.add('delete')
+    deleteTD.classList.add('deleteTd')
     deleteTD.appendChild(deleteBtn)
-    deleteBtn.onclick = () => deleteBtn.closest('table').remove()
-
-    rows[1].appendChild(timeTD)
+    deleteBtn.onclick = function(){ 
+      deleteBtn.closest('table').remove()
+      deleteRecipe(recipe['recipeName'])
+    }
     rows[1].appendChild(diffTD)
+    rows[1].appendChild(timeTD)
+    
     rows[1].appendChild(deleteTD)
 
     

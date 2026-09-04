@@ -1,8 +1,8 @@
 {
-  "name": "",
-  "version": "",
-  "description": "",
-  "author": "",
+  "name": "Cookbook",
+  "version": "1.0",
+  "description": "A simple recipe manager webapp",
+  "author": "Noah Gaskill",
   "scripts": {
     "start": "node server.js"
   },

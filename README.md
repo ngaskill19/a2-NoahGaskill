@@ -1,12 +1,7 @@
-Assignment 2 - Short Stack: Basic Two-tier Web Application using HTML/CSS/JS and Node.js  
+Assignment 2 - Cookbook: A Recipe Manager  
 ===
 
-Due: September 4th, by 1:59 PM.
 
-This assignment will introduce you to creating a prototype two-tiered web application. 
-Your application will include the use of HTML, CSS, JavaScript, and Node.js functionality, with active communication between the client and the server.
-
-Baseline Requirements
 ---
 
 There are a range of application areas and possibilities that meet these baseline requirements. 
@@ -99,6 +94,10 @@ Include a very brief summary of your project here. Be sure to include the CSS po
 - **Tech Achievement 2 - Ingredient/Instruction submission**: I designed the ingredient and instruction fields to work so that users enter one item at a time, which then gets added to a list displayed on the screen. I did have to research some things to make this work, like learning that a button in a form has a default behavior of submitting the form, or how to access the parent element of something so the delete button could work. This design decision also complicated the process of obtaining the entered data. Instead of just using input.value, I had to get the li elements from inside each list, get the inner text, and then parse out the delete button's text. It makes sense that text from an object's children are included in the inner text of the parent, but this is behavior that I felt was not obvious.
 
 
-
 ### Design/Evaluation Achievements
-- **Design Achievement 1**: 
+- **Design Achievement 1 - UI/UX Test**: 
+1. Karnik
+2. What problems did the user have with your design?
+The main problem he faced with my design was the submission of ingredients and instructions. He did not realize that they had to press a button to actually add the recipe, and thought leaving it in the input field was enough (which for the other inputs, it was, so I understand).
+3. Again, the thing that surprised me was that he found it unclear how to save the ingredients and recipe steps properly. 
+4. Based on his feedback and the results of this test, I plan to make the add ingredient and instruction buttons darker to make them stand out more, and I will update the placeholder text of the input boxes to mention hitting the button and not just entering an ingredient or step
